@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
-  Input,
-  InputLabel,
   TableContainer,
   Table,
   TableHead,
   TableRow,
   TableCell,
-  Button,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 
@@ -16,25 +13,24 @@ export default function App() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (event) => {
     setFeet(event.totalFeet);
-    setHeight(event.setHeight);
-    setPostInstall(event.postInstall);
-    setAccent(event.accent);
+    //setHeight(event.setHeight);
+    //setPostInstall(event.postInstall);
+    //setAccent(event.accent);
     setBlackAlum(event.blackAlum);
     setWalkGate(event.setWalkGate);
-    setDoubleGate(event.setDoubleGate);
+    //setDoubleGate(event.setDoubleGate);
   };
   const [totalFeet, setFeet] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [postInstall, setPostInstall] = useState(0);
-  const [accent, setAccent] = useState(0);
+  //const [height, setHeight] = useState(0);
+  //const [postInstall, setPostInstall] = useState(0);
+  //const [accent, setAccent] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
   const [walkGate, setWalkGate] = useState(0);
-  const [doubleGate, setDoubleGate] = useState(0);
+  //const [doubleGate, setDoubleGate] = useState(0);
 
   // let totalFeet = (data) => data.totalFeet;
   // let totalFeet = (watch("totalFeet"));
