@@ -27,11 +27,11 @@ export default function App() {
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
     console.log(event.totalFeet, event.accent, event.postInstall, event.height)
-    setFeet(((event.totalFeet/6)*event.height) + (event.walkGate*13) +(event.doubleGate*26) + event.accent);
-    setPosts((event.totalFeet/6)+1);
-    setBrackets(event.totalFeet/6);
+    setFeet(Math.ceil(((event.totalFeet/6)*event.height) + (event.walkGate*13) +(event.doubleGate*26) + event.accent));
+    setPosts(Math.ceil((event.totalFeet/6)+1));
+    setBrackets(Math.ceil(event.totalFeet/6));
     setBlackAlum(event.blackAlum);
-    setGateFrame(parseInt(event.walkGate) + parseInt(event.doubleGate * 2));
+    setGateFrame(Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))); 
   };
 
   const [posts, setPosts] = useState(0);
@@ -55,8 +55,8 @@ export default function App() {
             {...register("totalFeet", { required: true })}
           />
           <select defaultValue="0" {...register("height")}>
-            <option value="9">4'</option>
-            <option value="14">6'</option>
+            <option value="8">4'</option>
+            <option value="13">6'</option>
           </select>
           {/* <select defaultValue="0" {...register("postInstall")}>
             <option value="mount">Mount</option>
