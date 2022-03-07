@@ -9,7 +9,7 @@ import {
   TableCell,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import logo1 from "./logo1.jpg";
+// import logo1 from "./logo1.jpg";
 
 export default function App() {
   const {
