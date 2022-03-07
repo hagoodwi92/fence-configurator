@@ -16,13 +16,14 @@ export default function App() {
     formState: { errors },
   } = useForm();
   const onSubmit = (event) => {
+    console.log(event);
     setFeet(event.totalFeet);
     //setHeight(event.setHeight);
     //setPostInstall(event.postInstall);
     //setAccent(event.accent);
     setBlackAlum(event.blackAlum);
-    setWalkGate(event.setWalkGate);
-    //setDoubleGate(event.setDoubleGate);
+    setWalkGate(parseInt(event.walkGate));
+    setDoubleGate(parseInt(event.doubleGate));
   };
   const [totalFeet, setFeet] = useState(0);
   //const [height, setHeight] = useState(0);
@@ -30,7 +31,7 @@ export default function App() {
   //const [accent, setAccent] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
   const [walkGate, setWalkGate] = useState(0);
-  //const [doubleGate, setDoubleGate] = useState(0);
+  const [doubleGate, setDoubleGate] = useState(0);
 
   // let totalFeet = (data) => data.totalFeet;
   // let totalFeet = (watch("totalFeet"));
@@ -91,7 +92,7 @@ export default function App() {
           </TableHead>
           <TableRow>
             <TableCell>
-              Composite Boards: {Math.ceil(totalFeet * 2.42 + walkGate * 13)}
+              Composite Boards: {Math.ceil((totalFeet * 2.42) + (walkGate*13) +(doubleGate*26))}
             </TableCell>
           </TableRow>
           <TableRow>
@@ -101,7 +102,7 @@ export default function App() {
             <TableCell>Brackets: {Math.ceil(totalFeet * 0.167)}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Gate Frames: {walkGate}</TableCell>
+            <TableCell>Gate Frames: {walkGate + (doubleGate*2)}</TableCell>
           </TableRow>
           <TableCell>BlackAlum: {blackAlum}</TableCell>
         </Table>
