@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
+  Container,
   TableContainer,
   Table,
   TableHead,
@@ -8,6 +9,7 @@ import {
   TableCell,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
+import logo1 from "./logo1.jpg";
 
 export default function App() {
   const {
@@ -16,46 +18,30 @@ export default function App() {
     formState: { errors },
   } = useForm();
   const onSubmit = (event) => {
-    console.log(event);
-    setFeet(event.totalFeet);
-    //setHeight(event.setHeight);
-    //setPostInstall(event.postInstall);
-    //setAccent(event.accent);
+    setFeet(
+      Math.ceil((event.totalFeet * 2.42) + (event.walkGate*13) +(event.doubleGate*26)));
+    setPosts(Math.ceil(event.totalFeet * 0.173));
+    setBrackets(Math.ceil(event.totalFeet * 0.167));
     setBlackAlum(event.blackAlum);
-    setWalkGate(parseInt(event.walkGate));
-    setDoubleGate(parseInt(event.doubleGate));
+    setGateFrame(parseInt(event.walkGate)+ parseInt((event.doubleGate*2)));
   };
+  const [posts, setPosts] = useState(0);
   const [totalFeet, setFeet] = useState(0);
-  //const [height, setHeight] = useState(0);
-  //const [postInstall, setPostInstall] = useState(0);
-  //const [accent, setAccent] = useState(0);
+  const [brackets, setBrackets] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
-  const [walkGate, setWalkGate] = useState(0);
-  const [doubleGate, setDoubleGate] = useState(0);
-
-  // let totalFeet = (data) => data.totalFeet;
-  // let totalFeet = (watch("totalFeet"));
-  // watch input value by passing the name of it
-
-  // let posts = 0;
-  // let brackets = 0;
-  // let gateFrame = 0;
-  // let blackA = 0;
-  // accent = parseInt(accent * 3);
-
-  // gateFrame = Math.ceil(walkGate + dGate);
-  // let boards = Math.ceil(2.42 + gateFrame * 13 - accent);
-  // posts = Math.ceil(totalFeet * 0.173);
-  // brackets = Math.ceil(totalFeet * 0.167);
-
-  // blackA = blackAlum;
+  const [gateFrame, setGateFrame] = useState(0);
 
   return (
+    
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
+      <Container>
+      {/* <img class='logo' src={logo1}></img> */}
+        <h1>Infinity Euro Fencing Calculator</h1>
+        <br></br>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
-        <input
+        Total Feet: <input
           defaultValue="0"
           {...register("totalFeet", { required: true })}
         />
@@ -68,13 +54,13 @@ export default function App() {
           <option value="ground">Ground</option>
         </select>
         <select defaultValue="0" {...register("accent")}>
-          <option value="Lattice">Lattice</option>
-          <option value="Acrilic">Acrilic</option>
-          <option value="None">None</option>
+          <option value="lattice">Lattice</option>
+          <option value="acrilic">Acrilic</option>
+          <option value="none">None</option>
         </select>
-        <input defaultValue="0" {...register("blackAlum")} />
-        <input defaultValue="0" {...register("walkGate")} />
-        <input defaultValue="0" {...register("doubleGate")} />
+        Black Alum:<input defaultValue="0" {...register("blackAlum")} />
+        Walk Gate:<input defaultValue="0" {...register("walkGate")} />
+        Double Gate:<input defaultValue="0" {...register("doubleGate")} />
 
         {/* include validation with required or other standard HTML validation rules */}
         {/* <input {...register("exampleRequired", { required: true })} /> */}
@@ -92,21 +78,22 @@ export default function App() {
           </TableHead>
           <TableRow>
             <TableCell>
-              Composite Boards: {Math.ceil((totalFeet * 2.42) + (walkGate*13) +(doubleGate*26))}
+              Composite Boards: {totalFeet}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Posts: {Math.ceil(totalFeet * 0.173)}</TableCell>
+            <TableCell>Posts: {posts}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Brackets: {Math.ceil(totalFeet * 0.167)}</TableCell>
+            <TableCell>Brackets: {brackets}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Gate Frames: {walkGate + (doubleGate*2)}</TableCell>
+            <TableCell>Gate Frames: {gateFrame}</TableCell>
           </TableRow>
-          <TableCell>BlackAlum: {blackAlum}</TableCell>
+          <TableCell>Black Alum Boards: {blackAlum}</TableCell>
         </Table>
       </TableContainer>
+      </Container>
     </React.Fragment>
   );
 }
