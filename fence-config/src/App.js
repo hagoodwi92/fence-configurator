@@ -77,13 +77,14 @@ export default function App() {
                 <Item>
                   <InputLabel>Total Feet: </InputLabel>
                   <Input
+                    inputProps={{ style: { textAlign: "center" } }}
                     defaultValue="0"
                     {...register("totalFeet", { required: true })}
                   />
                 </Item>
                 <Item>
                   <InputLabel>Height</InputLabel>
-                  <Select defaultValue="0" {...register("height")}>
+                  <Select defaultValue="8" {...register("height",{ required: true })}>
                     <MenuItem value="8">4'</MenuItem>
                     <MenuItem value="13">6'</MenuItem>
                   </Select>
@@ -100,6 +101,7 @@ export default function App() {
                 <Item>
                   <InputLabel>Black Aluminum Boards:</InputLabel>
                   <Input
+                    inputProps={{ style: { textAlign: "center" } }}
                     defaultValue="1"
                     {...register("blackAlum", { required: true })}
                   />
@@ -107,6 +109,7 @@ export default function App() {
                 <Item>
                   <InputLabel>Single Gate:</InputLabel>
                   <Input
+                    inputProps={{ style: { textAlign: "center" } }}
                     defaultValue="0"
                     {...register("walkGate", { required: true })}
                   />
@@ -114,6 +117,7 @@ export default function App() {
                 <Item>
                   <InputLabel>Double Gate:</InputLabel>
                   <Input
+                    inputProps={{ style: { textAlign: "center" } }}
                     defaultValue="0"
                     {...register("doubleGate", { required: true })}
                   />
@@ -148,18 +152,33 @@ export default function App() {
                   <h3>Parts Needed:</h3>
                 </TableHead>
                 <TableRow>
-                  <TableCell><h6>Composite Boards: </h6>{totalFeet}</TableCell>
+                  <TableCell>
+                    <h6>Composite Boards: </h6>
+                    {totalFeet}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><h6>Posts: </h6>{posts}</TableCell>
+                  <TableCell>
+                    <h6>Posts: </h6>
+                    {posts}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><h6>Brackets: </h6>{brackets}</TableCell>
+                  <TableCell>
+                    <h6>Brackets: </h6>
+                    {brackets}
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell><h6>Gate Frames: </h6>{gateFrame}</TableCell>
+                  <TableCell>
+                    <h6>Gate Frames: </h6>
+                    {gateFrame}
+                  </TableCell>
                 </TableRow>
-                <TableCell><h6>Black Alum Boards: </h6>{blackAlum}</TableCell>
+                <TableCell>
+                  <h6>Black Alum Boards: </h6>
+                  {blackAlum}
+                </TableCell>
               </Table>
             </TableContainer>
             {/* <img class="logo" height='30%' alt='logo' src={logo1}></img>  */}
