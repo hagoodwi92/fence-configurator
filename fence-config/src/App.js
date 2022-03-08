@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useForm } from "react-hook-form";
 import {
   TableContainer,
@@ -16,9 +17,7 @@ import {
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Container, Row, Col } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 
-// import logo1 from "./logo1.jpg";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -68,7 +67,6 @@ export default function App() {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
       <Container>
-        {/* <img class='logo' src={logo1}></img> */}
         <h1>Infinity Euro Fencing Calculator</h1>
         <br></br>
         <Row>
@@ -147,23 +145,24 @@ export default function App() {
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 300 }} aria-label="simple table">
                 <TableHead>
-                  <u>Parts Needed:</u>
+                  <h3>Parts Needed:</h3>
                 </TableHead>
                 <TableRow>
-                  <TableCell>Composite Boards: {totalFeet}</TableCell>
+                  <TableCell><h6>Composite Boards: </h6>{totalFeet}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Posts: {posts}</TableCell>
+                  <TableCell><h6>Posts: </h6>{posts}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Brackets: {brackets}</TableCell>
+                  <TableCell><h6>Brackets: </h6>{brackets}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Gate Frames: {gateFrame}</TableCell>
+                  <TableCell><h6>Gate Frames: </h6>{gateFrame}</TableCell>
                 </TableRow>
-                <TableCell>Black Alum Boards: {blackAlum}</TableCell>
+                <TableCell><h6>Black Alum Boards: </h6>{blackAlum}</TableCell>
               </Table>
             </TableContainer>
+            {/* <img class="logo" height='30%' alt='logo' src={logo1}></img>  */}
           </Col>
         </Row>
       </Container>
