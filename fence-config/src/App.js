@@ -36,20 +36,24 @@ export default function App() {
   const onSubmit = (event) => {
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
-    event.postInstall = parseInt(event.postInstall);
     event.height = parseInt(event.height);
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
-    event.blackAlum = parseInt(Math.ceil((event.totalFeet/6)*event.blackAlum))
+    event.blackAlum = parseInt(
+      Math.ceil((event.totalFeet / 6) * event.blackAlum)
+    );
     console.log(event.totalFeet, event.accent, event.postInstall, event.height);
     setFeet(
       Math.ceil(
         (event.totalFeet / 6) * event.height +
           event.walkGate * 13 +
           event.doubleGate * 26 +
-          event.accent - event.blackAlum
+          event.accent -
+          event.blackAlum
       )
     );
+    //conditional for sku's here
+
     setPosts(Math.ceil(event.totalFeet / 6 + 1));
     setBrackets(Math.ceil(event.totalFeet / 6));
     setBlackAlum(event.blackAlum);
@@ -64,11 +68,14 @@ export default function App() {
   const [blackAlum, setBlackAlum] = useState(0);
   const [gateFrame, setGateFrame] = useState(0);
 
+
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
       <Container>
-        <h1><u>Infinity Euro Fencing Calculator</u></h1>
+        <h1>
+          <u>Infinity Euro Fencing Calculator</u>
+        </h1>
         <br></br>
         <Row>
           <Col>
@@ -85,7 +92,10 @@ export default function App() {
                 </Item>
                 <Item>
                   <InputLabel>Height</InputLabel>
-                  <Select defaultValue="8" {...register("height",{ required: true })}>
+                  <Select
+                    defaultValue="8"
+                    {...register("height", { required: true })}
+                  >
                     <MenuItem value="9">4'</MenuItem>
                     <MenuItem value="14">6'</MenuItem>
                   </Select>
@@ -97,6 +107,16 @@ export default function App() {
                     <MenuItem value="-3">Lattice</MenuItem>
                     <MenuItem value="3">Acrilic</MenuItem>
                     <MenuItem value="0">None</MenuItem>
+                  </Select>
+                </Item>
+                <Item>
+                  <InputLabel>Post Install</InputLabel>
+                  <Select
+                    defaultValue="8"
+                    {...register("postInstall", { required: true })}
+                  >
+                    <MenuItem value="mount">Mount</MenuItem>
+                    <MenuItem value="ground">Ground</MenuItem>
                   </Select>
                 </Item>
                 <Item>
@@ -154,30 +174,30 @@ export default function App() {
                 </TableHead>
                 <TableRow>
                   <TableCell>
-                    <h6>Composite Boards: </h6>
+                    <h6>Composite Boards (Black Rose) (EF 00200): </h6>
                     {totalFeet}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <h6>Posts: </h6>
+                    <h6>8' Posts (EF 20508): </h6>
                     {posts}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <h6>Brackets: </h6>
+                    <h6>Framing Bracket (EF 40408): </h6>
                     {brackets}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <h6>Gate Frames: </h6>
+                    <h6>Gate Frames (EF 60408 + 2 EF 62508): </h6>
                     {gateFrame}
                   </TableCell>
                 </TableRow>
                 <TableCell>
-                  <h6>Black Alum Boards: </h6>
+                  <h6>Aluminum Accent Boards (EF 00308): </h6>
                   {blackAlum}
                 </TableCell>
               </Table>
