@@ -40,13 +40,14 @@ export default function App() {
     event.height = parseInt(event.height);
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
+    event.blackAlum = parseInt(Math.ceil((event.totalFeet/6)*event.blackAlum))
     console.log(event.totalFeet, event.accent, event.postInstall, event.height);
     setFeet(
       Math.ceil(
         (event.totalFeet / 6) * event.height +
           event.walkGate * 13 +
           event.doubleGate * 26 +
-          event.accent
+          event.accent - event.blackAlum
       )
     );
     setPosts(Math.ceil(event.totalFeet / 6 + 1));
@@ -85,8 +86,8 @@ export default function App() {
                 <Item>
                   <InputLabel>Height</InputLabel>
                   <Select defaultValue="8" {...register("height",{ required: true })}>
-                    <MenuItem value="8">4'</MenuItem>
-                    <MenuItem value="13">6'</MenuItem>
+                    <MenuItem value="9">4'</MenuItem>
+                    <MenuItem value="14">6'</MenuItem>
                   </Select>
                 </Item>
                 <Item>
