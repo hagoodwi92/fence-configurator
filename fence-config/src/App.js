@@ -67,13 +67,13 @@ export default function App() {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
       <Container>
-        <h1>Infinity Euro Fencing Calculator</h1>
+        <h1><u>Infinity Euro Fencing Calculator</u></h1>
         <br></br>
         <Row>
           <Col>
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
-              <Stack width="200px" spacing={2}>
+              <Stack spacing={2}>
                 <Item>
                   <InputLabel>Total Feet: </InputLabel>
                   <Input
