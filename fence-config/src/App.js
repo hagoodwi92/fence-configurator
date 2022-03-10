@@ -3,6 +3,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useForm } from "react-hook-form";
 import {
+  Button,
   TableContainer,
   Table,
   TableHead,
@@ -80,13 +81,13 @@ export default function App() {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
       <Container>
-      <Card variant="outlined"><h1>
-          Infinity Euro Fencing Calculator
-        </h1></Card>
-        <br></br> 
+        <Card variant="outlined">
+          <h1>Infinity Euro Fencing Calculator</h1>
+        </Card>
+        <br></br>
         <Row>
           <Col>
-            <form  onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
               <Stack spacing={2}>
                 <Item>
@@ -100,7 +101,9 @@ export default function App() {
                       />
                     </Col>
                     <Col>
-                      <InputLabel>Black Aluminum Boards(Per Section):</InputLabel>
+                      <InputLabel>
+                        Black Aluminum Boards(Per Section):
+                      </InputLabel>
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
@@ -109,7 +112,7 @@ export default function App() {
                     </Col>
                   </Row>
                 </Item>
-                
+
                 <Item>
                   <Row>
                     <Col>
@@ -164,13 +167,37 @@ export default function App() {
                 </Item>
                 <Item>
                   <Row>
-                    <Col><Input type="submit" /></Col>
-                    <Col><Input type="reset" onClick={() => reset({ totalFeet: 0,
-                    blackAlum: 0,
-                    walkGate: 0,
-                    doubleGate: 0,
-                    accent: 'None',
-                     })} /> </Col>
+                    <Col>
+                      <Button
+                        sx={{
+                          "&.MuiButton-text": { color: "#808080" },
+                          border: "2px black solid",
+                        }}
+                        type="submit"
+                      >
+                        Submit
+                      </Button>
+                    </Col>
+                    <Col>
+                      <Button
+                        sx={{
+                          "&.MuiButton-text": { color: "#808080" },
+                          border: "2px black solid",
+                        }}
+                        type="reset"
+                        onClick={() =>
+                          reset({
+                            totalFeet: 0,
+                            blackAlum: 0,
+                            walkGate: 0,
+                            doubleGate: 0,
+                            accent: "None",
+                          })
+                        }
+                      >
+                        Reset
+                      </Button>{" "}
+                    </Col>
                   </Row>
                 </Item>
               </Stack>
@@ -195,13 +222,19 @@ export default function App() {
           <br></br>
           <Col>
             <TableContainer component={Paper}>
-              <Table bgcolor='lightgrey' sx={{ minWidth: 300 }} aria-label="simple table">
+              <Table
+                bgcolor="lightgrey"
+                sx={{ minWidth: 300 }}
+                aria-label="simple table"
+              >
                 <TableHead>
                   <h3>Parts Needed:</h3>
                 </TableHead>
                 <TableRow>
                   <TableCell>
-                    <h6>Composite Boards (Black Rose) (EF 00200): </h6>
+                    <h6>
+                      Composite Boards (Black Rose) <i></i>(EF 00200):{" "}
+                    </h6>
                     {totalFeet}
                   </TableCell>
                 </TableRow>
