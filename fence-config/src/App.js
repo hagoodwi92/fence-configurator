@@ -35,6 +35,15 @@ export default function App() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const onReset = (event) => {
+    setFeet(0);
+    setBrackets(0);
+    setGateFrame(0);
+    setBlackAlum(0);
+    setsixFtPosts(0);
+    seteightFtPosts(0);
+    setfourFtPosts(0);
+  }
   const onSubmit = (event) => {
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
@@ -191,7 +200,6 @@ export default function App() {
                             blackAlum: 0,
                             walkGate: 0,
                             doubleGate: 0,
-                            accent: "None",
                           })
                         }
                       >
@@ -284,6 +292,18 @@ export default function App() {
                     {fourFeetPosts}
                   </TableCell>
                 </TableRow>
+                <TableCell>
+                  <Button
+                    sx={{
+                      "&.MuiButton-text": { color: "#808080" },
+                      border: "2px black solid",
+                    }}
+                    type="reset"
+                    onClick={onReset}
+                  >
+                    Reset
+                  </Button>
+                </TableCell>
               </Table>
             </TableContainer>
             {/* <img class="logo" height='30%' alt='logo' src={logo1}></img>  */}
