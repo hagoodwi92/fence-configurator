@@ -86,7 +86,7 @@ export default function App() {
         <br></br> 
         <Row>
           <Col>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form  onSubmit={handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
               <Stack spacing={2}>
                 <Item>
@@ -146,7 +146,7 @@ export default function App() {
                       <InputLabel>Accent</InputLabel>
                       <Select defaultValue="0" {...register("accent")}>
                         <MenuItem value="-3">Lattice</MenuItem>
-                        <MenuItem value="3">Acrilic</MenuItem>
+                        <MenuItem value="3">Acrylic</MenuItem>
                         <MenuItem value="0">None</MenuItem>
                       </Select>
                     </Col>
@@ -169,7 +169,7 @@ export default function App() {
                     blackAlum: 0,
                     walkGate: 0,
                     doubleGate: 0,
-                    accent: 'none',
+                    accent: 'None',
                      })} /> </Col>
                   </Row>
                 </Item>
@@ -195,7 +195,7 @@ export default function App() {
           <br></br>
           <Col>
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 300 }} aria-label="simple table">
+              <Table bgcolor='lightgrey' sx={{ minWidth: 300 }} aria-label="simple table">
                 <TableHead>
                   <h3>Parts Needed:</h3>
                 </TableHead>
