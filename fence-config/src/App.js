@@ -68,7 +68,6 @@ export default function App() {
   const [blackAlum, setBlackAlum] = useState(0);
   const [gateFrame, setGateFrame] = useState(0);
 
-
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
@@ -93,7 +92,7 @@ export default function App() {
                 <Item>
                   <InputLabel>Height</InputLabel>
                   <Select
-                    defaultValue="8"
+                    required={true}
                     {...register("height", { required: true })}
                   >
                     <MenuItem value="9">4'</MenuItem>
@@ -112,7 +111,7 @@ export default function App() {
                 <Item>
                   <InputLabel>Post Install</InputLabel>
                   <Select
-                    defaultValue="8"
+                    required={true}
                     {...register("postInstall", { required: true })}
                   >
                     <MenuItem value="mount">Mount</MenuItem>
