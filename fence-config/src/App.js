@@ -13,6 +13,7 @@ import {
   InputLabel,
   MenuItem,
   Stack,
+  Card,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -28,11 +29,11 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function App() {
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
   const onSubmit = (event) => {
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
@@ -53,8 +54,13 @@ export default function App() {
       )
     );
     //conditional for sku's here
-
-    setPosts(Math.ceil(event.totalFeet / 6 + 1));
+    if (event.postInstall === "ground" && event.height === 9) {
+      setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+    } else if (event.postInstall === "ground" && event.height === 14) {
+      seteightFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+    } else if (event.postInstall === "mount" && event.height === 9) {
+      setfourFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+    }
     setBrackets(Math.ceil(event.totalFeet / 6));
     setBlackAlum(event.blackAlum);
     setGateFrame(
@@ -62,7 +68,9 @@ export default function App() {
     );
   };
 
-  const [posts, setPosts] = useState(0);
+  const [sixFtPosts, setsixFtPosts] = useState(0);
+  const [eightFtPosts, seteightFtPosts] = useState(0);
+  const [fourFeetPosts, setfourFtPosts] = useState(0);
   const [totalFeet, setFeet] = useState(0);
   const [brackets, setBrackets] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
@@ -72,78 +80,98 @@ export default function App() {
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
     <React.Fragment>
       <Container>
-        <h1>
-          <u>Infinity Euro Fencing Calculator</u>
-        </h1>
-        <br></br>
+      <Card variant="outlined"><h1>
+          Infinity Euro Fencing Calculator
+        </h1></Card>
+        <br></br> 
         <Row>
           <Col>
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
               <Stack spacing={2}>
                 <Item>
-                  <InputLabel>Total Feet: </InputLabel>
-                  <Input
-                    inputProps={{ style: { textAlign: "center" } }}
-                    defaultValue="0"
-                    {...register("totalFeet", { required: true })}
-                  />
+                  <Row>
+                    <Col>
+                      <InputLabel>Total Feet: </InputLabel>
+                      <Input
+                        inputProps={{ style: { textAlign: "center" } }}
+                        defaultValue="0"
+                        {...register("totalFeet", { required: true })}
+                      />
+                    </Col>
+                    <Col>
+                      <InputLabel>Black Aluminum Boards(Per Section):</InputLabel>
+                      <Input
+                        inputProps={{ style: { textAlign: "center" } }}
+                        defaultValue="0"
+                        {...register("blackAlum", { required: true })}
+                      />
+                    </Col>
+                  </Row>
+                </Item>
+                
+                <Item>
+                  <Row>
+                    <Col>
+                      <InputLabel>Single Gate:</InputLabel>
+                      <Input
+                        inputProps={{ style: { textAlign: "center" } }}
+                        defaultValue="0"
+                        {...register("walkGate", { required: true })}
+                      />
+                    </Col>
+                    <Col>
+                      <InputLabel>Double Gate:</InputLabel>
+                      <Input
+                        inputProps={{ style: { textAlign: "center" } }}
+                        defaultValue="0"
+                        {...register("doubleGate", { required: true })}
+                      />
+                    </Col>
+                  </Row>
                 </Item>
                 <Item>
-                  <InputLabel>Height</InputLabel>
-                  <Select
-                    required={true}
-                    {...register("height", { required: true })}
-                  >
-                    <MenuItem value="9">4'</MenuItem>
-                    <MenuItem value="14">6'</MenuItem>
-                  </Select>
+                  <Row>
+                    <Col>
+                      <InputLabel>Height</InputLabel>
+                      <Select
+                        required={true}
+                        {...register("height", { required: true })}
+                      >
+                        <MenuItem value="9">4'</MenuItem>
+                        <MenuItem value="14">6'</MenuItem>
+                      </Select>
+                    </Col>
+                    <Col>
+                      <InputLabel>Accent</InputLabel>
+                      <Select defaultValue="0" {...register("accent")}>
+                        <MenuItem value="-3">Lattice</MenuItem>
+                        <MenuItem value="3">Acrilic</MenuItem>
+                        <MenuItem value="0">None</MenuItem>
+                      </Select>
+                    </Col>
+                    <Col>
+                      <InputLabel>Post Install</InputLabel>
+                      <Select
+                        required={true}
+                        {...register("postInstall", { required: true })}
+                      >
+                        <MenuItem value="mount">Mount</MenuItem>
+                        <MenuItem value="ground">In-Ground</MenuItem>
+                      </Select>
+                    </Col>
+                  </Row>
                 </Item>
                 <Item>
-                  {" "}
-                  <InputLabel>Accent</InputLabel>
-                  <Select defaultValue="0" {...register("accent")}>
-                    <MenuItem value="-3">Lattice</MenuItem>
-                    <MenuItem value="3">Acrilic</MenuItem>
-                    <MenuItem value="0">None</MenuItem>
-                  </Select>
-                </Item>
-                <Item>
-                  <InputLabel>Post Install</InputLabel>
-                  <Select
-                    required={true}
-                    {...register("postInstall", { required: true })}
-                  >
-                    <MenuItem value="mount">Mount</MenuItem>
-                    <MenuItem value="ground">Ground</MenuItem>
-                  </Select>
-                </Item>
-                <Item>
-                  <InputLabel>Black Aluminum Boards:</InputLabel>
-                  <Input
-                    inputProps={{ style: { textAlign: "center" } }}
-                    defaultValue="1"
-                    {...register("blackAlum", { required: true })}
-                  />
-                </Item>
-                <Item>
-                  <InputLabel>Single Gate:</InputLabel>
-                  <Input
-                    inputProps={{ style: { textAlign: "center" } }}
-                    defaultValue="0"
-                    {...register("walkGate", { required: true })}
-                  />
-                </Item>
-                <Item>
-                  <InputLabel>Double Gate:</InputLabel>
-                  <Input
-                    inputProps={{ style: { textAlign: "center" } }}
-                    defaultValue="0"
-                    {...register("doubleGate", { required: true })}
-                  />
-                </Item>
-                <Item>
-                  <Input type="submit" />
+                  <Row>
+                    <Col><Input type="submit" /></Col>
+                    <Col><Input type="reset" onClick={() => reset({ totalFeet: 0,
+                    blackAlum: 0,
+                    walkGate: 0,
+                    doubleGate: 0,
+                    accent: 'none',
+                     })} /> </Col>
+                  </Row>
                 </Item>
               </Stack>
 
@@ -179,12 +207,6 @@ export default function App() {
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <h6>8' Posts (EF 20508): </h6>
-                    {posts}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
                     <h6>Framing Bracket (EF 40408): </h6>
                     {brackets}
                   </TableCell>
@@ -199,6 +221,36 @@ export default function App() {
                   <h6>Aluminum Accent Boards (EF 00308): </h6>
                   {blackAlum}
                 </TableCell>
+                <TableRow>
+                  <TableCell>
+                    <h6>6' Posts (EF 20408): </h6>
+                    {sixFtPosts}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <h6>8' Posts (EF 20508): </h6>
+                    {eightFtPosts}
+                  </TableCell>
+                </TableRow>
+                {/* <TableRow>
+                  <TableCell>
+                    <h6>6' HD Posts (EF 62518): </h6>
+                    {}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <h6>8' HD Posts (EF 62508): </h6>
+                    {}
+                  </TableCell>
+                </TableRow> */}
+                <TableRow>
+                  <TableCell>
+                    <h6>4' Surface Mount Posts (EF 20108): </h6>
+                    {fourFeetPosts}
+                  </TableCell>
+                </TableRow>
               </Table>
             </TableContainer>
             {/* <img class="logo" height='30%' alt='logo' src={logo1}></img>  */}
