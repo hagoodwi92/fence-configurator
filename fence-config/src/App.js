@@ -71,6 +71,9 @@ export default function App() {
     } else if (event.postInstall === "mount" && event.height === 9) {
       setfourFtPosts(Math.ceil(event.totalFeet / 6 + 1));
     }
+    else if (event.postInstall === "mount" && event.height === 14) {
+      setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+    }
     setBrackets(Math.ceil(event.totalFeet / 6));
     setBlackAlum(event.blackAlum);
     setGateFrame(
