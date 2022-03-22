@@ -220,7 +220,9 @@ export default function App() {
               {/* include validation with required or other standard HTML validation rules */}
               {/* <input {...register("exampleRequired", { required: true })} /> */}
               {/* errors will return when field validation fails  */}
-              {errors.blackAlum && <span>This field is required!/Number is too large</span>}
+              {errors.blackAlum && (
+                <span>This field is required!/Number is too large</span>
+              )}
               {errors.totalFeet && <span>This field is required!</span>}
               {errors.walkGate && <span>This field is required!</span>}
               {errors.doubleGate && <span>This field is required!</span>}
