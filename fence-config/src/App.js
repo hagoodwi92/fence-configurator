@@ -246,35 +246,35 @@ export default function App() {
                     <h6>
                       Composite Boards (Black Rose) <i></i>(EF 00200):{" "}
                     </h6>
-                    {totalFeet}
+                    {totalFeet.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
                     <h6>Framing Bracket (EF 40408): </h6>
-                    {brackets}
+                    {brackets.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
                     <h6>Gate Frames (EF 60408 + 2 EF 62508): </h6>
-                    {gateFrame}
+                    {gateFrame.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableCell>
                   <h6>Aluminum Accent Boards (EF 00308): </h6>
-                  {blackAlum}
+                  {blackAlum.toLocaleString()}
                 </TableCell>
                 <TableRow>
                   <TableCell>
                     <h6>6' Posts (EF 20408): </h6>
-                    {sixFtPosts}
+                    {sixFtPosts.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
                     <h6>8' Posts (EF 20508): </h6>
-                    {eightFtPosts}
+                    {eightFtPosts.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 {/* <TableRow>
@@ -292,7 +292,7 @@ export default function App() {
                 <TableRow>
                   <TableCell>
                     <h6>4' Surface Mount Posts (EF 20108): </h6>
-                    {fourFeetPosts}
+                    {fourFeetPosts.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableCell>
