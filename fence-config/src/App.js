@@ -118,7 +118,7 @@ export default function App() {
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
-                        {...register("blackAlum", { required: true, max:14 })}
+                        {...register("blackAlum", { required: true })}
                       />
                     </Col>
                   </Row>
