@@ -43,7 +43,7 @@ export default function App() {
     setsixFtPosts(0);
     seteightFtPosts(0);
     setfourFtPosts(0);
-  }
+  };
   const onSubmit = (event) => {
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
@@ -70,8 +70,7 @@ export default function App() {
       seteightFtPosts(Math.ceil(event.totalFeet / 6 + 1));
     } else if (event.postInstall === "mount" && event.height === 9) {
       setfourFtPosts(Math.ceil(event.totalFeet / 6 + 1));
-    }
-    else if (event.postInstall === "mount" && event.height === 14) {
+    } else if (event.postInstall === "mount" && event.height === 14) {
       setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
     }
     setBrackets(Math.ceil(event.totalFeet / 6));
@@ -119,7 +118,7 @@ export default function App() {
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
-                        {...register("blackAlum", { required: true })}
+                        {...register("blackAlum", { required: true, max:14 })}
                       />
                     </Col>
                   </Row>
@@ -221,7 +220,7 @@ export default function App() {
               {/* include validation with required or other standard HTML validation rules */}
               {/* <input {...register("exampleRequired", { required: true })} /> */}
               {/* errors will return when field validation fails  */}
-              {errors.blackAlum && <span>This field is required!</span>}
+              {errors.blackAlum && <span>This field is required!/Number is too large</span>}
               {errors.totalFeet && <span>This field is required!</span>}
               {errors.walkGate && <span>This field is required!</span>}
               {errors.doubleGate && <span>This field is required!</span>}
