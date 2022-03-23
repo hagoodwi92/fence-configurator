@@ -104,7 +104,7 @@ export default function App() {
                 <Item>
                   <Row>
                     <Col>
-                      <InputLabel>Total Feet: </InputLabel>
+                      <InputLabel>Linear Feet: </InputLabel>
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
