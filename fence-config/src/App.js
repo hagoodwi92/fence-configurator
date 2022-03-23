@@ -43,6 +43,8 @@ export default function App() {
     setsixFtPosts(0);
     seteightFtPosts(0);
     setfourFtPosts(0);
+    setDropRod(0);
+    setSurfaceMount(0);
   };
   const onSubmit = (event) => {
     event.totalFeet = parseInt(event.totalFeet);
@@ -50,6 +52,7 @@ export default function App() {
     event.height = parseInt(event.height);
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
+    setDropRod(event.doubleGate);
     event.blackAlum = parseInt(
       Math.ceil((event.totalFeet / 6) * event.blackAlum)
     );
@@ -70,8 +73,10 @@ export default function App() {
       seteightFtPosts(Math.ceil(event.totalFeet / 6 + 1));
     } else if (event.postInstall === "mount" && event.height === 9) {
       setfourFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+      setSurfaceMount(Math.ceil(event.totalFeet / 6 + 1));
     } else if (event.postInstall === "mount" && event.height === 14) {
       setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+      setSurfaceMount(Math.ceil(event.totalFeet / 6 + 1)); 
     }
     setBrackets(Math.ceil(event.totalFeet / 6));
     setBlackAlum(event.blackAlum);
@@ -87,6 +92,8 @@ export default function App() {
   const [brackets, setBrackets] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
   const [gateFrame, setGateFrame] = useState(0);
+  const [dropRod, setDropRod] = useState(0);
+  const [surfaceMount, setSurfaceMount] = useState(0);
 
   return (
     /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
@@ -294,6 +301,18 @@ export default function App() {
                   <TableCell>
                     <h6>4' Surface Mount Posts (EF 20108): </h6>
                     {fourFeetPosts.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <h6>Drop Rods (EF 61608): </h6>
+                    {dropRod.toLocaleString()}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <h6>Surface Mounts (EF 30038): </h6>
+                    {surfaceMount.toLocaleString()}
                   </TableCell>
                 </TableRow>
                 <TableCell>
