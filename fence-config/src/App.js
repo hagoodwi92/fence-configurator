@@ -50,6 +50,7 @@ export default function App() {
   //   setSurfaceMount(0);
   // };
   const onSubmit = (event) => {
+    console.log(event);
     setSubmit(true);
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
@@ -99,6 +100,16 @@ export default function App() {
   const [dropRod, setDropRod] = useState(0);
   const [surfaceMount, setSurfaceMount] = useState(0);
   const [submit, setSubmit] = useState(false);
+
+  function goBack(){
+    setSubmit()
+    reset({
+      totalFeet: 0,
+      blackAlum: 0,
+      walkGate: 0,
+      doubleGate: 0,
+    })
+  }
 
   if (submit === true) {
     return (
@@ -177,7 +188,7 @@ export default function App() {
                           border: "2px black solid",
                         }}
                         type="reset"
-                        onClick={setSubmit}
+                        onClick={goBack}
                       >
                         Go Back
                       </Button>
