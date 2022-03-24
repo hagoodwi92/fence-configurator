@@ -13,6 +13,10 @@
   clear: both;
 }
 
+#cardHeader {
+  padding-top: 75px;
+}
+
 .tableCell{
   text-align: center;
 }

@@ -20,6 +20,8 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import FadeIn from "react-fade-in";
+// import blackRose from "./blackRose.jpg";
+// import framingBracket from "./framingBracket.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -104,134 +106,6 @@ export default function App() {
         <Container>
           <Row>
             <Col>
-              <Card variant="outlined">
-                <h1>Infinity Euro Fencing Calculator</h1>
-              </Card>
-              <br></br>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                {/* register your input into the hook by invoking the "register" function */}
-                <Stack spacing={2}>
-                  <Item>
-                    <Row>
-                      <Col>
-                        <InputLabel>Linear Feet: </InputLabel>
-                        <Input
-                          inputProps={{ style: { textAlign: "center" } }}
-                          defaultValue="0"
-                          {...register("totalFeet", { required: true })}
-                        />
-                      </Col>
-                      <Col>
-                        <InputLabel>
-                          Black Aluminum Boards(Per Section):
-                        </InputLabel>
-                        <Input
-                          inputProps={{ style: { textAlign: "center" } }}
-                          defaultValue="0"
-                          {...register("blackAlum", { required: true })}
-                        />
-                      </Col>
-                    </Row>
-                  </Item>
-                  <Item>
-                    <Row>
-                      <Col>
-                        <InputLabel>Single Gate:</InputLabel>
-                        <Input
-                          inputProps={{ style: { textAlign: "center" } }}
-                          defaultValue="0"
-                          {...register("walkGate", { required: true })}
-                        />
-                      </Col>
-                      <Col>
-                        <InputLabel>Double Gate:</InputLabel>
-                        <Input
-                          inputProps={{ style: { textAlign: "center" } }}
-                          defaultValue="0"
-                          {...register("doubleGate", { required: true })}
-                        />
-                      </Col>
-                    </Row>
-                  </Item>
-                  <Item>
-                    <Row>
-                      <Col>
-                        <InputLabel>Height</InputLabel>
-                        <Select
-                          required={true}
-                          {...register("height", { required: true })}
-                        >
-                          <MenuItem value="9">4'</MenuItem>
-                          <MenuItem value="14">6'</MenuItem>
-                        </Select>
-                      </Col>
-                      <Col>
-                        <InputLabel>Accent</InputLabel>
-                        <Select defaultValue="0" {...register("accent")}>
-                          <MenuItem value="-3">Lattice</MenuItem>
-                          <MenuItem value="3">Acrylic</MenuItem>
-                          <MenuItem value="0">None</MenuItem>
-                        </Select>
-                      </Col>
-                      <Col>
-                        <InputLabel>Post Install</InputLabel>
-                        <Select
-                          required={true}
-                          {...register("postInstall", { required: true })}
-                        >
-                          <MenuItem value="mount">Mount</MenuItem>
-                          <MenuItem value="ground">In-Ground</MenuItem>
-                        </Select>
-                      </Col>
-                    </Row>
-                  </Item>
-                  <Item>
-                    <Row>
-                      <Col>
-                        <Button
-                          sx={{
-                            "&.MuiButton-text": { color: "#808080" },
-                            border: "2px black solid",
-                          }}
-                          type="submit"
-                        >
-                          Submit
-                        </Button>
-                      </Col>
-                      <Col>
-                        <Button
-                          sx={{
-                            "&.MuiButton-text": { color: "#808080" },
-                            border: "2px black solid",
-                          }}
-                          type="reset"
-                          onClick={() =>
-                            reset({
-                              totalFeet: 0,
-                              blackAlum: 0,
-                              walkGate: 0,
-                              doubleGate: 0,
-                            })
-                          }
-                        >
-                          Reset
-                        </Button>{" "}
-                      </Col>
-                    </Row>
-                  </Item>
-                </Stack>
-                {errors.blackAlum && (
-                  <span>This field is required!/Number is too large</span>
-                )}
-                {errors.totalFeet && <span>This field is required!</span>}
-                {errors.walkGate && <span>This field is required!</span>}
-                {errors.doubleGate && <span>This field is required!</span>}
-                <br></br>
-              </form>
-              <br></br>
-              <br></br>
-            </Col>
-            <Col>
               <FadeIn>
                 <TableContainer component={Paper}>
                   <Table
@@ -305,7 +179,7 @@ export default function App() {
                         type="reset"
                         onClick={setSubmit}
                       >
-                        Reset
+                        Go Back
                       </Button>
                     </TableCell>
                   </Table>
@@ -318,10 +192,11 @@ export default function App() {
     );
   } else {
     return (
-      <Container>
+      <Container id='cardHeader' >
         <Row>
-          <Col>
-            <Card variant="outlined">
+          <Col></Col>
+          <Col md={6}>
+            <Card  variant="outlined">
               <h1>Infinity Euro Fencing Calculator</h1>
             </Card>
             <br></br>
