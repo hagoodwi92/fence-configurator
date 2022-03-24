@@ -264,7 +264,7 @@ export default function App() {
                       <InputLabel>Accent</InputLabel>
                       <Select defaultValue="0" {...register("accent")}>
                         <MenuItem value="-3">Lattice</MenuItem>
-                        <MenuItem value="3">Acrylic</MenuItem>
+                        <MenuItem value="-3">Acrylic</MenuItem>
                         <MenuItem value="0">None</MenuItem>
                       </Select>
                     </Col>
