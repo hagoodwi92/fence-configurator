@@ -48,7 +48,7 @@ export default function App() {
   //   setfourFtPosts(0);
   //   setDropRod(0);
   //   setSurfaceMount(0);
-  // };
+  // }; 
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
@@ -61,11 +61,10 @@ export default function App() {
     event.blackAlum = parseInt(
       Math.ceil((event.totalFeet / 6) * event.blackAlum)
     );
-    console.log(event.totalFeet, event.accent, event.postInstall, event.height);
     setFeet(
       Math.ceil(
-        (event.totalFeet / 6) * event.height +
-          event.walkGate * 13 +
+        (event.totalFeet / 6) * event.height -
+          event.walkGate * 13 -
           event.doubleGate * 26 +
           event.accent -
           event.blackAlum
@@ -113,7 +112,7 @@ export default function App() {
   if (submit === true) {
     return (
       <React.Fragment>
-        <Container id='top'>
+        <Container id="top">
           <Row>
             <Col>
               <FadeIn>
@@ -215,24 +214,17 @@ export default function App() {
               <Stack spacing={2}>
                 <Item>
                   <Row>
-                    <Col></Col>
                     <Col>
-                      {/* <InputLabel>
-                        Black Aluminum Boards(Per Section):
-                      </InputLabel>
-                      <Input
-                        inputProps={{ style: { textAlign: "center" } }}
-                        defaultValue="0"
-                        {...register("blackAlum", { required: true })}
-                      /> */}
-                      <InputLabel>Linear Feet: </InputLabel>
-                      <Input
-                        inputProps={{ style: { textAlign: "center" } }}
-                        defaultValue="0"
-                        {...register("totalFeet", { required: true })}
-                      />
+                      <InputLabel>Color:</InputLabel>
+                      <Select
+                        required={true}
+                        {...register("color", { required: true })}
+                      >
+                        <MenuItem value="black rose">Black Rose</MenuItem>
+                        <MenuItem value="king cedar">King Cedar</MenuItem>
+                        <MenuItem value="oxford grey">Oxford Grey</MenuItem>
+                      </Select>
                     </Col>
-                    <Col></Col>
                   </Row>
                 </Item>
 
@@ -312,6 +304,20 @@ export default function App() {
                         <MenuItem value="13">13</MenuItem>
                         <MenuItem value="14">14</MenuItem>
                       </Select>
+                    </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
+                    <Col>
+                      <Col>
+                        <InputLabel>Linear Feet: </InputLabel>
+                        <Input
+                          inputProps={{ style: { textAlign: "center" } }}
+                          defaultValue="0"
+                          {...register("totalFeet", { required: true })}
+                        />
+                      </Col>
                     </Col>
                   </Row>
                 </Item>
