@@ -101,14 +101,13 @@ export default function App() {
   const [surfaceMount, setSurfaceMount] = useState(0);
   const [submit, setSubmit] = useState(false);
 
-  function goBack(){
-    setSubmit()
+  function goBack() {
+    setSubmit();
     reset({
       totalFeet: 0,
-      blackAlum: 0,
       walkGate: 0,
       doubleGate: 0,
-    })
+    });
   }
 
   if (submit === true) {
@@ -203,11 +202,11 @@ export default function App() {
     );
   } else {
     return (
-      <Container id='cardHeader' >
+      <Container id="cardHeader">
         <Row>
           <Col></Col>
           <Col md={6}>
-            <Card  variant="outlined">
+            <Card variant="outlined">
               <h1>Infinity Euro Fencing Calculator</h1>
             </Card>
             <br></br>
@@ -216,7 +215,16 @@ export default function App() {
               <Stack spacing={2}>
                 <Item>
                   <Row>
+                    <Col></Col>
                     <Col>
+                      {/* <InputLabel>
+                        Black Aluminum Boards(Per Section):
+                      </InputLabel>
+                      <Input
+                        inputProps={{ style: { textAlign: "center" } }}
+                        defaultValue="0"
+                        {...register("blackAlum", { required: true })}
+                      /> */}
                       <InputLabel>Linear Feet: </InputLabel>
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
@@ -224,16 +232,7 @@ export default function App() {
                         {...register("totalFeet", { required: true })}
                       />
                     </Col>
-                    <Col>
-                      <InputLabel>
-                        Black Aluminum Boards(Per Section):
-                      </InputLabel>
-                      <Input
-                        inputProps={{ style: { textAlign: "center" } }}
-                        defaultValue="0"
-                        {...register("blackAlum", { required: true })}
-                      />
-                    </Col>
+                    <Col></Col>
                   </Row>
                 </Item>
 
@@ -277,6 +276,10 @@ export default function App() {
                         <MenuItem value="0">None</MenuItem>
                       </Select>
                     </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
                     <Col>
                       <InputLabel>Post Install</InputLabel>
                       <Select
@@ -285,6 +288,29 @@ export default function App() {
                       >
                         <MenuItem value="mount">Mount</MenuItem>
                         <MenuItem value="ground">In-Ground</MenuItem>
+                      </Select>
+                    </Col>
+                    <Col>
+                      <InputLabel>Black Accent Boards(per section)</InputLabel>
+                      <Select
+                        required={true}
+                        {...register("blackAlum", { required: true })}
+                      >
+                        <MenuItem value="0">0</MenuItem>
+                        <MenuItem value="1">1</MenuItem>
+                        <MenuItem value="2">2</MenuItem>
+                        <MenuItem value="3">3</MenuItem>
+                        <MenuItem value="4">4</MenuItem>
+                        <MenuItem value="5">5</MenuItem>
+                        <MenuItem value="6">6</MenuItem>
+                        <MenuItem value="7">7</MenuItem>
+                        <MenuItem value="8">8</MenuItem>
+                        <MenuItem value="9">9</MenuItem>
+                        <MenuItem value="10">10</MenuItem>
+                        <MenuItem value="11">11</MenuItem>
+                        <MenuItem value="12">12</MenuItem>
+                        <MenuItem value="13">13</MenuItem>
+                        <MenuItem value="14">14</MenuItem>
                       </Select>
                     </Col>
                   </Row>
