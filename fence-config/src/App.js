@@ -23,6 +23,8 @@ import FadeIn from "react-fade-in";
 import blackRose from "./blackRose.jpg";
 import oxfordGrey from "./oxfordGrey.jpeg";
 import kingCedar from "./kingCedar.jpeg";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 // import framingBracket from "./framingBracket.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -264,21 +266,27 @@ export default function App() {
                 <Item>
                   <Row>
                     <Col>
-                      <img
-                        id="blackRose"
-                        alt="black rose"
-                        src={blackRose}
-                      ></img>
-                      <img
-                        id="kingCedar"
-                        alt="king cedar"
-                        src={kingCedar}
-                      ></img>
-                      <img
-                        id="oxfordGrey"
-                        alt="oxford grey"
-                        src={oxfordGrey}
-                      ></img>
+                      <Zoom>
+                        <img
+                          id="blackRose"
+                          alt="black rose"
+                          src={blackRose}
+                        ></img>
+                      </Zoom>
+                      <Zoom>
+                        <img
+                          id="kingCedar"
+                          alt="king cedar"
+                          src={kingCedar}
+                        ></img>
+                      </Zoom>
+                      <Zoom>
+                        <img
+                          id="oxfordGrey"
+                          alt="oxford grey"
+                          src={oxfordGrey}
+                        ></img>
+                      </Zoom>
                     </Col>
                   </Row>
                 </Item>
