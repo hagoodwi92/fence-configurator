@@ -22,7 +22,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import FadeIn from "react-fade-in";
 import blackRose from "./blackRose.jpg";
 import oxfordGrey from "./oxfordGrey.jpeg";
-import kingCedar from './kingCedar.jpeg';
+import kingCedar from "./kingCedar.jpeg";
 // import framingBracket from "./framingBracket.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -270,14 +270,14 @@ export default function App() {
                         src={blackRose}
                       ></img>
                       <img
-                        id="oxfordGrey"
-                        alt="oxford grey"
-                        src={oxfordGrey}
-                      ></img>
-                      <img
                         id="kingCedar"
                         alt="king cedar"
                         src={kingCedar}
+                      ></img>
+                      <img
+                        id="oxfordGrey"
+                        alt="oxford grey"
+                        src={oxfordGrey}
                       ></img>
                     </Col>
                   </Row>
