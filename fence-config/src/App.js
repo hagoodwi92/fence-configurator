@@ -48,7 +48,7 @@ export default function App() {
   //   setfourFtPosts(0);
   //   setDropRod(0);
   //   setSurfaceMount(0);
-  // }; 
+  // };
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
@@ -61,15 +61,39 @@ export default function App() {
     event.blackAlum = parseInt(
       Math.ceil((event.totalFeet / 6) * event.blackAlum)
     );
-    setFeet(
-      Math.ceil(
-        (event.totalFeet / 6) * event.height -
-          event.walkGate * 13 -
-          event.doubleGate * 26 +
-          event.accent -
-          event.blackAlum
-      )
-    );
+
+    if (event.color === "black rose") {
+      setBlack(
+        Math.ceil(
+          (event.totalFeet / 6) * event.height -
+            event.walkGate * 13 -
+            event.doubleGate * 26 +
+            event.accent -
+            event.blackAlum
+        )
+      );
+    } else if (event.color === "king cedar") {
+      setCedar(
+        Math.ceil(
+          (event.totalFeet / 6) * event.height -
+            event.walkGate * 13 -
+            event.doubleGate * 26 +
+            event.accent -
+            event.blackAlum
+        )
+      );
+    } else {
+      setGrey(
+        Math.ceil(
+          (event.totalFeet / 6) * event.height -
+            event.walkGate * 13 -
+            event.doubleGate * 26 +
+            event.accent -
+            event.blackAlum
+        )
+      );
+    }
+
     //conditional for sku's here
     if (event.postInstall === "ground" && event.height === 9) {
       setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
@@ -92,13 +116,15 @@ export default function App() {
   const [sixFtPosts, setsixFtPosts] = useState(0);
   const [eightFtPosts, seteightFtPosts] = useState(0);
   const [fourFeetPosts, setfourFtPosts] = useState(0);
-  const [totalFeet, setFeet] = useState(0);
   const [brackets, setBrackets] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
   const [gateFrame, setGateFrame] = useState(0);
   const [dropRod, setDropRod] = useState(0);
   const [surfaceMount, setSurfaceMount] = useState(0);
   const [submit, setSubmit] = useState(false);
+  const [black, setBlack] = useState(0);
+  const [cedar, setCedar] = useState(0);
+  const [grey, setGrey] = useState(0);
 
   function goBack() {
     setSubmit();
@@ -130,7 +156,23 @@ export default function App() {
                         <h6>
                           Composite Boards (Black Rose) <i></i>(EF 00200):{" "}
                         </h6>
-                        {totalFeet.toLocaleString()}
+                        {black.toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <h6>
+                          Composite Boards (King Cedar) <i></i>(EF 00200):{" "}
+                        </h6>
+                        {cedar.toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <h6>
+                          Composite Boards (Oxford Grey) <i></i>(EF 00200):{" "}
+                        </h6>
+                        {grey.toLocaleString()}
                       </TableCell>
                     </TableRow>
                     <TableRow>
