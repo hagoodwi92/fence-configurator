@@ -38,17 +38,19 @@ export default function App() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  // const onReset = (event) => {
-  //   setFeet(0);
-  //   setBrackets(0);
-  //   setGateFrame(0);
-  //   setBlackAlum(0);
-  //   setsixFtPosts(0);
-  //   seteightFtPosts(0);
-  //   setfourFtPosts(0);
-  //   setDropRod(0);
-  //   setSurfaceMount(0);
-  // };
+  const onReset = (event) => {
+    setBlack(0);
+    setCedar(0);
+    setGrey(0);
+    setBrackets(0);
+    setGateFrame(0);
+    setBlackAlum(0);
+    setsixFtPosts(0);
+    seteightFtPosts(0);
+    setfourFtPosts(0);
+    setDropRod(0);
+    setSurfaceMount(0);
+  };
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
@@ -82,7 +84,7 @@ export default function App() {
             event.blackAlum
         )
       );
-    } else {
+    } else if (event.color === 'oxford grey') {
       setGrey(
         Math.ceil(
           (event.totalFeet / 6) * event.height -
@@ -128,10 +130,13 @@ export default function App() {
 
   function goBack() {
     setSubmit();
+    onReset();
     reset({
       totalFeet: 0,
       walkGate: 0,
       doubleGate: 0,
+      singleGate: 0,
+      color: null,
     });
   }
 
