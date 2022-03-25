@@ -20,7 +20,9 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Container, Row, Col } from "react-bootstrap";
 import FadeIn from "react-fade-in";
-// import blackRose from "./blackRose.jpg";
+import blackRose from "./blackRose.jpg";
+import oxfordGrey from "./oxfordGrey.jpeg";
+import kingCedar from './kingCedar.jpeg';
 // import framingBracket from "./framingBracket.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -84,7 +86,7 @@ export default function App() {
             event.blackAlum
         )
       );
-    } else if (event.color === 'oxford grey') {
+    } else if (event.color === "oxford grey") {
       setGrey(
         Math.ceil(
           (event.totalFeet / 6) * event.height -
@@ -262,7 +264,29 @@ export default function App() {
                 <Item>
                   <Row>
                     <Col>
+                      <img
+                        id="blackRose"
+                        alt="black rose"
+                        src={blackRose}
+                      ></img>
+                      <img
+                        id="oxfordGrey"
+                        alt="oxford grey"
+                        src={oxfordGrey}
+                      ></img>
+                      <img
+                        id="kingCedar"
+                        alt="king cedar"
+                        src={kingCedar}
+                      ></img>
+                    </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
+                    <Col>
                       <InputLabel>Color:</InputLabel>
+
                       <Select
                         required={true}
                         {...register("color", { required: true })}
