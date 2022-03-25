@@ -58,6 +58,7 @@ export default function App() {
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
+    window.scrollTo(0, 0);
     event.totalFeet = parseInt(event.totalFeet);
     event.accent = parseInt(event.accent);
     event.height = parseInt(event.height);
@@ -134,6 +135,7 @@ export default function App() {
 
   function goBack() {
     setSubmit();
+    window.scrollTo(0, 0);
     onReset();
     reset({
       totalFeet: 0,
