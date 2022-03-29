@@ -54,13 +54,23 @@ export default function App() {
     setfourFtPosts(0);
     setDropRod(0);
     setSurfaceMount(0);
+    setAcrylic(0);
+    setLattice(0);
   };
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
     window.scrollTo(0, 0);
     event.totalFeet = parseInt(event.totalFeet);
-    event.accent = parseInt(event.accent);
+    let accent = 0;
+    if(event.accent === 'lattice'){
+      accent = -3;
+    }else if(event.accent === 'acrylic'){
+      accent = -3;
+    } else{
+      accent = 0;
+    }
+    
     event.height = parseInt(event.height);
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
@@ -71,32 +81,40 @@ export default function App() {
 
     if (event.color === "black rose") {
       setBlack(
-        Math.ceil(
-          (event.totalFeet / 6) * event.height -
-            event.walkGate * 13 -
-            event.doubleGate * 26 +
-            event.accent -
-            event.blackAlum
+        Math.max(
+          0,
+          Math.ceil(
+            (event.totalFeet / 6) * event.height -
+              event.walkGate * 13 -
+              event.doubleGate * 26 +
+              accent -
+              event.blackAlum
+          )
         )
       );
     } else if (event.color === "king cedar") {
       setCedar(
-        Math.ceil(
-          (event.totalFeet / 6) * event.height -
-            event.walkGate * 13 -
-            event.doubleGate * 26 +
-            event.accent -
-            event.blackAlum
+        Math.max(
+          0,
+          Math.ceil(
+            (event.totalFeet / 6) * event.height -
+              event.walkGate * 13 -
+              event.doubleGate * 26 +
+              accent -
+              event.blackAlum
+          )
         )
       );
     } else if (event.color === "oxford grey") {
       setGrey(
-        Math.ceil(
-          (event.totalFeet / 6) * event.height -
-            event.walkGate * 13 -
-            event.doubleGate * 26 +
-            event.accent -
-            event.blackAlum
+        Math.max(
+          Math.ceil(
+            (event.totalFeet / 6) * event.height -
+              event.walkGate * 13 -
+              event.doubleGate * 26 +
+              accent -
+              event.blackAlum
+          )
         )
       );
     }
@@ -118,6 +136,11 @@ export default function App() {
     setGateFrame(
       Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
     );
+    if(event.accent === 'lattice'){
+      setLattice(1);
+    } else if (event.accent === 'acrylic'){
+      setAcrylic(1);
+    }
   };
 
   const [sixFtPosts, setsixFtPosts] = useState(0);
@@ -132,6 +155,8 @@ export default function App() {
   const [black, setBlack] = useState(0);
   const [cedar, setCedar] = useState(0);
   const [grey, setGrey] = useState(0);
+  const [acrylic, setAcrylic] = useState(0);
+  const [lattice, setLattice] = useState(0);
 
   function goBack() {
     setSubmit();
@@ -232,18 +257,34 @@ export default function App() {
                         {surfaceMount.toLocaleString()}
                       </TableCell>
                     </TableRow>
-                    <TableCell>
-                      <Button
-                        sx={{
-                          "&.MuiButton-text": { color: "#808080" },
-                          border: "2px black solid",
-                        }}
-                        type="reset"
-                        onClick={goBack}
-                      >
-                        Go Back
-                      </Button>
-                    </TableCell>
+                    <TableRow>
+                      <TableCell>
+                        <h6>Lattice Accent (EF 50308): </h6>
+                        {lattice.toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <h6>Acrylic Accent (EF 51309): </h6>
+                        {acrylic.toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <div id="goBack">
+                          <Button
+                            sx={{
+                              "&.MuiButton-text": { color: "#808080" },
+                              border: "2px black solid",
+                            }}
+                            type="reset"
+                            onClick={goBack}
+                          >
+                            Go Back
+                          </Button>
+                        </div>
+                      </TableCell>
+                    </TableRow>
                   </Table>
                 </TableContainer>
               </FadeIn>
@@ -262,7 +303,7 @@ export default function App() {
               <h1>Infinity Euro Fencing Calculator</h1>
             </Card>
             <br></br>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="FenceForm" onSubmit={handleSubmit(onSubmit)}>
               {/* register your input into the hook by invoking the "register" function */}
               <Stack spacing={2}>
                 <Item>
@@ -296,8 +337,8 @@ export default function App() {
                   <Row>
                     <Col>
                       <InputLabel>Color:</InputLabel>
-
                       <Select
+                        id="color"
                         required={true}
                         {...register("color", { required: true })}
                       >
@@ -308,15 +349,15 @@ export default function App() {
                     </Col>
                   </Row>
                 </Item>
-
                 <Item>
                   <Row>
                     <Col>
                       <InputLabel>Single Gate:</InputLabel>
                       <Input
+                        id="walkGate"
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
-                        {...register("walkGate", { required: true })}
+                        {...register("walkGate", { required: true, min: 0 })}
                       />
                     </Col>
                     <Col>
@@ -324,7 +365,7 @@ export default function App() {
                       <Input
                         inputProps={{ style: { textAlign: "center" } }}
                         defaultValue="0"
-                        {...register("doubleGate", { required: true })}
+                        {...register("doubleGate", { required: true, min: 0 })}
                       />
                     </Col>
                   </Row>
@@ -344,8 +385,8 @@ export default function App() {
                     <Col>
                       <InputLabel>Accent</InputLabel>
                       <Select defaultValue="0" {...register("accent")}>
-                        <MenuItem value="-3">Lattice</MenuItem>
-                        <MenuItem value="-3">Acrylic</MenuItem>
+                        <MenuItem value="lattice">Lattice</MenuItem>
+                        <MenuItem value="acrylic">Acrylic</MenuItem>
                         <MenuItem value="0">None</MenuItem>
                       </Select>
                     </Col>
@@ -394,10 +435,11 @@ export default function App() {
                       <Col>
                         <InputLabel>Linear Feet: </InputLabel>
                         <Input
+                          alt="linearFeet"
                           inputProps={{ style: { textAlign: "center" } }}
                           defaultValue="0"
-                          {...register("totalFeet", { required: true })}
-                        />
+                          {...register("totalFeet", { required: true, min: 0 })}
+                        ></Input>
                       </Col>
                     </Col>
                   </Row>
@@ -438,11 +480,17 @@ export default function App() {
                 </Item>
               </Stack>
               {errors.blackAlum && (
-                <span>This field is required!/Number is too large</span>
+                <span>This field is required!/Number is out of range</span>
               )}
-              {errors.totalFeet && <span>This field is required!</span>}
-              {errors.walkGate && <span>This field is required!</span>}
-              {errors.doubleGate && <span>This field is required!</span>}
+              {errors.totalFeet && (
+                <span>This field is required!/Number is out of range.</span>
+              )}
+              {errors.walkGate && (
+                <span>This field is required!/Number is out of range.</span>
+              )}
+              {errors.doubleGate && (
+                <span>This field is required!/Number is out of range.</span>
+              )}
               <br></br>
             </form>
             <br></br>

@@ -91,3 +91,7 @@ h1 {
 .container {
   margin-bottom: 100px;
 }
+
+#goBack {
+  text-align: center;
+}
