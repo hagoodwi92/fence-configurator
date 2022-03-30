@@ -25,7 +25,7 @@ import oxfordGrey from "./oxfordGrey.jpeg";
 import kingCedar from "./kingCedar.jpeg";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-// import framingBracket from "./framingBracket.jpg";
+import singleGate from "./singleGate.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -232,10 +232,18 @@ export default function App() {
                           Gate Frames (EF 60408 + 2 EF 62508): <br></br>
                           <br></br>
                           {gateFrame.toLocaleString()}
+                          <br></br>
+                          <Zoom style={{float:'right'}}>
+                            <img
+                              width="50px"
+                              src={singleGate}
+                              alt="single gate"
+                            ></img>
+                          </Zoom>
                         </h6>
                       </TableCell>
                     </TableRow>
-                    <TableCell>
+                    <TableCell> 
                       <h6>
                         Aluminum Accent Boards (EF 00308): <br></br>
                         <br></br>
