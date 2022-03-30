@@ -63,14 +63,14 @@ export default function App() {
     window.scrollTo(0, 0);
     event.totalFeet = parseInt(event.totalFeet);
     let accent = 0;
-    if(event.accent === 'lattice'){
+    if (event.accent === "lattice") {
       accent = -3;
-    }else if(event.accent === 'acrylic'){
+    } else if (event.accent === "acrylic") {
       accent = -3;
-    } else{
+    } else {
       accent = 0;
     }
-    
+
     event.height = parseInt(event.height);
     event.walkGate = parseInt(event.walkGate);
     event.doubleGate = parseInt(event.doubleGate);
@@ -136,9 +136,9 @@ export default function App() {
     setGateFrame(
       Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
     );
-    if(event.accent === 'lattice'){
+    if (event.accent === "lattice") {
       setLattice(1);
-    } else if (event.accent === 'acrylic'){
+    } else if (event.accent === "acrylic") {
       setAcrylic(1);
     }
   };
@@ -191,82 +191,116 @@ export default function App() {
                       <TableCell>
                         <h6>
                           Composite Boards (Black Rose) <i></i>(EF 00200):{" "}
+                          <br></br>
+                          <br></br>
+                          {black.toLocaleString()}
                         </h6>
-                        {black.toLocaleString()}
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
                         <h6>
                           Composite Boards (King Cedar) <i></i>(EF 00200):{" "}
+                          <br></br>
+                          <br></br>
+                          {cedar.toLocaleString()}
                         </h6>
-                        {cedar.toLocaleString()}
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
                         <h6>
                           Composite Boards (Oxford Grey) <i></i>(EF 00200):{" "}
+                          <br></br>
+                          <br></br>
+                          {grey.toLocaleString()}
                         </h6>
-                        {grey.toLocaleString()}
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Framing Bracket (EF 40408): </h6>
-                        {brackets.toLocaleString()}
+                        <h6>
+                          Framing Bracket (EF 40408): <br></br>
+                          <br></br>
+                          {brackets.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Gate Frames (EF 60408 + 2 EF 62508): </h6>
-                        {gateFrame.toLocaleString()}
+                        <h6>
+                          Gate Frames (EF 60408 + 2 EF 62508): <br></br>
+                          <br></br>
+                          {gateFrame.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableCell>
-                      <h6>Aluminum Accent Boards (EF 00308): </h6>
-                      {blackAlum.toLocaleString()}
+                      <h6>
+                        Aluminum Accent Boards (EF 00308): <br></br>
+                        <br></br>
+                        {blackAlum.toLocaleString()}
+                      </h6>
                     </TableCell>
                     <TableRow>
                       <TableCell>
-                        <h6>6' Posts (EF 20408): </h6>
-                        {sixFtPosts.toLocaleString()}
+                        <h6>
+                          6' Posts (EF 20408): <br></br>
+                          <br></br>
+                          {sixFtPosts.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>8' Posts (EF 20508): </h6>
-                        {eightFtPosts.toLocaleString()}
+                        <h6>
+                          8' Posts (EF 20508): <br></br>
+                          <br></br>
+                          {eightFtPosts.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>4' Surface Mount Posts (EF 20108): </h6>
-                        {fourFeetPosts.toLocaleString()}
+                        <h6>
+                          4' Surface Mount Posts (EF 20108): <br></br>
+                          <br></br> {fourFeetPosts.toLocaleString()}{" "}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Drop Rods (EF 61608): </h6>
-                        {dropRod.toLocaleString()}
+                        <h6>
+                          Drop Rods (EF 61608): <br></br>
+                          <br></br>
+                          {dropRod.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Surface Mounts (EF 30038): </h6>
-                        {surfaceMount.toLocaleString()}
+                        <h6>
+                          Surface Mounts (EF 30038): <br></br>
+                          <br></br> {surfaceMount.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Lattice Accent (EF 50308): </h6>
-                        {lattice.toLocaleString()}
+                        <h6>
+                          Lattice Accent (EF 50308):<br></br>
+                          <br></br>
+                          {lattice.toLocaleString()}{" "}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>
-                        <h6>Acrylic Accent (EF 51309): </h6>
-                        {acrylic.toLocaleString()}
+                        <h6>
+                          Acrylic Accent (EF 51309): <br></br>
+                          <br></br>
+                          {acrylic.toLocaleString()}
+                        </h6>
                       </TableCell>
                     </TableRow>
                     <TableRow>
