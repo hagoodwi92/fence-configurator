@@ -57,7 +57,9 @@ export default function App() {
     setSurfaceMount(0);
     setAcrylic(0);
     setLattice(0);
-  };
+    setSixFtHDPosts(0);
+    setEightFtHDPosts(0); 
+  }; 
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
@@ -142,6 +144,26 @@ export default function App() {
     } else if (event.accent === "acrylic") {
       setAcrylic(1);
     }
+
+    if (event.walkGate > 0 || event.doubleGate > 0) {
+      if (event.postInstall === "ground" && event.height === 9) {
+        setSixFtHDPosts(
+          Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
+        );
+      } else if (event.postInstall === "ground" && event.height === 14) {
+        setEightFtHDPosts(
+          Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
+        );
+      } else if (event.postInstall === "mount" && event.height === 14) {
+        setSixFtHDPosts(
+          Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
+        );
+      } else if (event.postInstall === "mount" && event.height === 9) {
+        setSixFtHDPosts(
+          Math.ceil(parseInt(event.walkGate) + parseInt(event.doubleGate * 2))
+        );
+      }
+    }
   };
 
   const [sixFtPosts, setsixFtPosts] = useState(0);
@@ -158,6 +180,8 @@ export default function App() {
   const [grey, setGrey] = useState(0);
   const [acrylic, setAcrylic] = useState(0);
   const [lattice, setLattice] = useState(0);
+  const [sixFtHDPosts, setSixFtHDPosts] = useState(0);
+  const [eightFtHDPosts, setEightFtHDPosts] = useState(0);
 
   function goBack() {
     setSubmit();
@@ -230,7 +254,7 @@ export default function App() {
                     <TableRow>
                       <TableCell>
                         <h6>
-                          Gate Frames (EF 60408 + 2 EF 62508): <br></br>
+                          Gate Frames (EF 60408): <br></br>
                           <br></br>
                           {gateFrame.toLocaleString()}
                           <br></br>
@@ -314,6 +338,24 @@ export default function App() {
                     </TableRow>
                     <TableRow>
                       <TableCell>
+                        <h6>
+                          8' Ft HD Post Kit (EF 62508): <br></br>
+                          <br></br>
+                          {eightFtHDPosts.toLocaleString()}
+                        </h6>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
+                        <h6>
+                          6' Ft HD Post Kit (EF 62518): <br></br>
+                          <br></br>
+                          {sixFtHDPosts.toLocaleString()}
+                        </h6>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>
                         <div id="goBack">
                           <Button
                             sx={{
@@ -343,7 +385,9 @@ export default function App() {
           <Col></Col>
           <Col md={6}>
             <Card variant="outlined">
-              <CardHeader title="Fence Configurator"></CardHeader>
+              <b>
+                <CardHeader title="Fence Configurator"></CardHeader>
+              </b>
             </Card>
             <br></br>
             <form className="FenceForm" onSubmit={handleSubmit(onSubmit)}>
