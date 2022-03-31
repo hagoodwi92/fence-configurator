@@ -15,6 +15,7 @@ import {
   MenuItem,
   Stack,
   Card,
+  CardHeader,
 } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
@@ -342,7 +343,7 @@ export default function App() {
           <Col></Col>
           <Col md={6}>
             <Card variant="outlined">
-              <h1>Infinity Euro Fencing Calculator</h1>
+              <CardHeader title="Fence Configurator"></CardHeader>
             </Card>
             <br></br>
             <form className="FenceForm" onSubmit={handleSubmit(onSubmit)}>
@@ -379,7 +380,7 @@ export default function App() {
                         ></img>
                       </Zoom>
                       <p>Oxford Grey</p>
-                    </Col> 
+                    </Col>
                   </Row>
                 </Item>
                 <Item>
