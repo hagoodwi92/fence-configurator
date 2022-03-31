@@ -233,7 +233,7 @@ export default function App() {
                           <br></br>
                           {gateFrame.toLocaleString()}
                           <br></br>
-                          <Zoom style={{float:'right'}}>
+                          <Zoom style={{ float: "right" }}>
                             <img
                               width="50px"
                               src={singleGate}
@@ -243,7 +243,7 @@ export default function App() {
                         </h6>
                       </TableCell>
                     </TableRow>
-                    <TableCell> 
+                    <TableCell>
                       <h6>
                         Aluminum Accent Boards (EF 00308): <br></br>
                         <br></br>
@@ -358,6 +358,9 @@ export default function App() {
                           src={blackRose}
                         ></img>
                       </Zoom>
+                      <p>Black Rose</p>
+                    </Col>
+                    <Col>
                       <Zoom>
                         <img
                           id="kingCedar"
@@ -365,6 +368,9 @@ export default function App() {
                           src={kingCedar}
                         ></img>
                       </Zoom>
+                      <p>King Cedar</p>
+                    </Col>
+                    <Col>
                       <Zoom>
                         <img
                           id="oxfordGrey"
@@ -372,7 +378,8 @@ export default function App() {
                           src={oxfordGrey}
                         ></img>
                       </Zoom>
-                    </Col>
+                      <p>Oxford Grey</p>
+                    </Col> 
                   </Row>
                 </Item>
                 <Item>
