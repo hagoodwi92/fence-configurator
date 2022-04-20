@@ -27,6 +27,9 @@ import kingCedar from "./kingCedar.jpeg";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import singleGate from "./singleGate.jpg";
+import oxford_grey from "./oxford_grey.jpg";
+import black_rose from "./black_rose.jpg";
+import king_cedar from './king_cedar.jpg';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -58,8 +61,8 @@ export default function App() {
     setAcrylic(0);
     setLattice(0);
     setSixFtHDPosts(0);
-    setEightFtHDPosts(0); 
-  }; 
+    setEightFtHDPosts(0);
+  };
   const onSubmit = (event) => {
     console.log(event);
     setSubmit(true);
@@ -219,6 +222,15 @@ export default function App() {
                           <br></br>
                           <br></br>
                           {black.toLocaleString()}
+                          <br></br>
+                          <br></br>
+                          <Zoom style={{ float: "right" }}>
+                            <img
+                              width="50px"
+                              src={black_rose}
+                              alt="black rose"
+                            ></img>
+                          </Zoom>
                         </h6>
                       </TableCell>
                     </TableRow>
@@ -229,6 +241,15 @@ export default function App() {
                           <br></br>
                           <br></br>
                           {cedar.toLocaleString()}
+                          <br></br>
+                          <br></br>
+                          <Zoom style={{ float: "right" }}>
+                            <img
+                              width="50px"
+                              src={king_cedar}
+                              alt="king cedar"
+                            ></img>
+                          </Zoom>
                         </h6>
                       </TableCell>
                     </TableRow>
@@ -239,6 +260,15 @@ export default function App() {
                           <br></br>
                           <br></br>
                           {grey.toLocaleString()}
+                          <br></br>
+                          <br></br>
+                          <Zoom style={{ float: "right" }}>
+                            <img
+                              width="50px"
+                              src={oxford_grey}
+                              alt="oxford grey"
+                            ></img>
+                          </Zoom>
                         </h6>
                       </TableCell>
                     </TableRow>
