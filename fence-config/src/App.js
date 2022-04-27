@@ -29,7 +29,7 @@ import "react-medium-image-zoom/dist/styles.css";
 import singleGate from "./singleGate.jpg";
 import oxford_grey from "./oxford_grey.jpg";
 import black_rose from "./black_rose.jpg";
-import king_cedar from './king_cedar.jpg';
+import king_cedar from "./king_cedar.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -53,8 +53,8 @@ export default function App() {
     setBrackets(0);
     setGateFrame(0);
     setBlackAlum(0);
-    setsixFtPosts(0);
-    seteightFtPosts(0);
+    setsixFtPosts();
+    seteightFtPosts();
     setfourFtPosts(0);
     setDropRod(0);
     setSurfaceMount(0);
@@ -127,9 +127,25 @@ export default function App() {
 
     //conditional for sku's here
     if (event.postInstall === "ground" && event.height === 9) {
-      setsixFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+      setsixFtPosts(
+        <TableRow>
+          <TableCell>
+            <h6>6' Posts (EF 20408): {Math.ceil(event.totalFeet / 6 + 1)}</h6>
+          </TableCell>
+        </TableRow>
+      );
     } else if (event.postInstall === "ground" && event.height === 14) {
-      seteightFtPosts(Math.ceil(event.totalFeet / 6 + 1));
+      seteightFtPosts(
+        <TableRow>
+          <TableCell>
+            <h6>
+              8' Posts (EF 20508): {Math.ceil(event.totalFeet / 6 + 1)}
+              <br></br>
+              <br></br>
+            </h6>
+          </TableCell>
+        </TableRow>
+      );
     } else if (event.postInstall === "mount" && event.height === 9) {
       setfourFtPosts(Math.ceil(event.totalFeet / 6 + 1));
       setSurfaceMount(Math.ceil(event.totalFeet / 6 + 1));
@@ -169,8 +185,8 @@ export default function App() {
     }
   };
 
-  const [sixFtPosts, setsixFtPosts] = useState(0);
-  const [eightFtPosts, seteightFtPosts] = useState(0);
+  const [sixFtPosts, setsixFtPosts] = useState();
+  const [eightFtPosts, seteightFtPosts] = useState();
   const [fourFeetPosts, setfourFtPosts] = useState(0);
   const [brackets, setBrackets] = useState(0);
   const [blackAlum, setBlackAlum] = useState(0);
@@ -237,7 +253,7 @@ export default function App() {
                     <TableRow>
                       <TableCell>
                         <h6>
-                          Composite Boards (King Cedar) <i></i>(EF 00200):{" "}
+                          Composite Boards (King Cedar) <i></i>(EF 00200):
                           <br></br>
                           <br></br>
                           {cedar.toLocaleString()}
@@ -298,31 +314,17 @@ export default function App() {
                         </h6>
                       </TableCell>
                     </TableRow>
-                    <TableCell>
-                      <h6>
-                        Aluminum Accent Boards (EF 00308): <br></br>
-                        <br></br>
-                        {blackAlum.toLocaleString()}
-                      </h6>
-                    </TableCell>
                     <TableRow>
                       <TableCell>
                         <h6>
-                          6' Posts (EF 20408): <br></br>
+                          Aluminum Accent Boards (EF 00308): <br></br>
                           <br></br>
-                          {sixFtPosts.toLocaleString()}
+                          {blackAlum.toLocaleString()}
                         </h6>
                       </TableCell>
                     </TableRow>
-                    <TableRow>
-                      <TableCell>
-                        <h6>
-                          8' Posts (EF 20508): <br></br>
-                          <br></br>
-                          {eightFtPosts.toLocaleString()}
-                        </h6>
-                      </TableCell>
-                    </TableRow>
+                    {sixFtPosts}
+                    {eightFtPosts}
                     <TableRow>
                       <TableCell>
                         <h6>
