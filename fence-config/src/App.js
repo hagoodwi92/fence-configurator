@@ -27,6 +27,9 @@ import kingCedar from "./kingCedar.jpeg";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import singleGate from "./singleGate.jpg";
+import doubleGatePhoto from "./double_gate.png";
+import latticePhoto from "./lattice.jpg";
+import blackAlumPhoto from "./blackAlum.jpg";
 // import oxford_grey from "./oxford_grey.jpg";
 // import black_rose from "./black_rose.jpg";
 // import king_cedar from "./king_cedar.jpg";
@@ -501,7 +504,15 @@ export default function App() {
                         ></img>
                       </Zoom>
                     </Col>
-                    <Col></Col>
+                    <Col>
+                      <Zoom>
+                        <img
+                          id="double"
+                          alt="double_gate"
+                          src={doubleGatePhoto}
+                        ></img>
+                      </Zoom>
+                    </Col>
                   </Row>
                 </Item>
                 <Item>
@@ -528,6 +539,18 @@ export default function App() {
                 <Item>
                   <Row>
                     <Col>
+                      <img
+                        id="lattice"
+                        alt="double_gate"
+                        src={latticePhoto}
+                      ></img>
+                      <p>Lattice Accent</p>
+                    </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
+                    <Col>
                       <InputLabel>Height</InputLabel>
                       <Select
                         required={true}
@@ -544,6 +567,18 @@ export default function App() {
                         <MenuItem value="acrylic">Acrylic</MenuItem>
                         <MenuItem value="0">None</MenuItem>
                       </Select>
+                    </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
+                    <Col>
+                    <img
+                        id="blackAlumBoard"
+                        alt="black_alum"
+                        src={blackAlumPhoto}
+                      ></img>
+                      <p>Black Accent Board</p>
                     </Col>
                   </Row>
                 </Item>
