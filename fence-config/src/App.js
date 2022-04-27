@@ -26,7 +26,7 @@ import oxfordGrey from "./oxfordGrey.jpeg";
 import kingCedar from "./kingCedar.jpeg";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
-// import singleGate from "./singleGate.jpg";
+import singleGate from "./singleGate.jpg";
 // import oxford_grey from "./oxford_grey.jpg";
 // import black_rose from "./black_rose.jpg";
 // import king_cedar from "./king_cedar.jpg";
@@ -103,7 +103,7 @@ export default function App() {
         <TableRow>
           <TableCell>
             <h6>
-              Composite Boards (Black Rose) <i></i>(EF 00200):
+              Composite Boards (Black Rose) <i></i>(EF 00200):{"  "}
               {Math.max(
                 0,
                 Math.ceil(
@@ -333,8 +333,7 @@ export default function App() {
   const [acrylic, setAcrylic] = useState();
   const [lattice, setLattice] = useState();
   // const [sixFtHDPosts, setSixFtHDPosts] = useState(0);
-  // const [eightFtHDPosts, setEightFtHDPosts] = useState(0); 
-
+  // const [eightFtHDPosts, setEightFtHDPosts] = useState(0);
 
   function goBack() {
     setSubmit();
@@ -354,16 +353,19 @@ export default function App() {
       <React.Fragment>
         <Container id="top">
           <Row>
+            <Col></Col>
             <Col>
               <FadeIn>
                 <TableContainer component={Paper}>
                   <Table
                     bgcolor="lightgrey"
-                    sx={{ minWidth: 300 }}
+                    sx={{ minWidth: 200 }}
                     aria-label="simple table"
                   >
                     <TableHead>
-                      <h3>Parts Needed:</h3>
+                      <h3>
+                        <u>Parts Needed:</u>
+                      </h3>
                     </TableHead>
                     {black}
                     {cedar}
@@ -417,6 +419,7 @@ export default function App() {
                 </TableContainer>
               </FadeIn>
             </Col>
+            <Col></Col>
           </Row>
         </Container>
       </React.Fragment>
@@ -484,6 +487,21 @@ export default function App() {
                         <MenuItem value="oxford grey">Oxford Grey</MenuItem>
                       </Select>
                     </Col>
+                  </Row>
+                </Item>
+                <Item>
+                  <Row>
+                    <Col>
+                      {" "}
+                      <Zoom>
+                        <img
+                          id="singleGate"
+                          alt="single_gate"
+                          src={singleGate}
+                        ></img>
+                      </Zoom>
+                    </Col>
+                    <Col></Col>
                   </Row>
                 </Item>
                 <Item>
