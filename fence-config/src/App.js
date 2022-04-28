@@ -30,9 +30,9 @@ import singleGate from "./singleGate.jpg";
 import doubleGatePhoto from "./double_gate.png";
 import latticePhoto from "./lattice.jpg";
 import blackAlumPhoto from "./blackAlum.jpg";
-// import oxford_grey from "./oxford_grey.jpg";
-// import black_rose from "./black_rose.jpg";
-// import king_cedar from "./king_cedar.jpg";
+import oxford_grey from "./oxford_grey.jpg";
+import black_rose from "./black_rose.jpg";
+import king_cedar from "./king_cedar.jpg";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -117,9 +117,10 @@ export default function App() {
                     event.blackAlum
                 )
               )}
-              {/* <Zoom style={{ float: "right" }}>
+              <br></br><br></br>
+              <Zoom style={{ float: "right" }}>
                 <img width="50px" src={black_rose} alt="black rose"></img>
-              </Zoom> */}
+              </Zoom>
             </h6>
           </TableCell>
         </TableRow>
@@ -140,9 +141,10 @@ export default function App() {
                     event.blackAlum
                 )
               )}
-              {/* <Zoom style={{ float: "right" }}>
+              <br></br><br></br>
+              <Zoom style={{ float: "right" }}>
                 <img width="50px" src={king_cedar} alt="king cedar"></img>
-              </Zoom> */}
+              </Zoom>
             </h6>
           </TableCell>
         </TableRow>
@@ -153,7 +155,7 @@ export default function App() {
           <TableCell>
             <h6>
               Composite Boards (Oxford Grey) <i></i>(EF 00200):
-              {Math.max(
+              {" "}{Math.max(
                 Math.ceil(
                   (event.totalFeet / 6) * event.height -
                     event.walkGate * 13 -
@@ -162,9 +164,10 @@ export default function App() {
                     event.blackAlum
                 )
               )}
-              {/* <Zoom style={{ float: "right" }}>
+              <br></br><br></br>
+              <Zoom style={{ float: "right" }}>
                 <img width="50px" src={oxford_grey} alt="oxford grey"></img>
-              </Zoom> */}
+              </Zoom>
             </h6>
           </TableCell>
         </TableRow>
@@ -564,7 +567,7 @@ export default function App() {
                       <InputLabel>Accent</InputLabel>
                       <Select defaultValue="0" {...register("accent")}>
                         <MenuItem value="lattice">Lattice</MenuItem>
-                        <MenuItem value="acrylic">Acrylic</MenuItem>
+                        {/* <MenuItem value="acrylic">Acrylic</MenuItem> */}
                         <MenuItem value="0">None</MenuItem>
                       </Select>
                     </Col>
@@ -573,7 +576,7 @@ export default function App() {
                 <Item>
                   <Row>
                     <Col>
-                    <img
+                      <img
                         id="blackAlumBoard"
                         alt="black_alum"
                         src={blackAlumPhoto}
